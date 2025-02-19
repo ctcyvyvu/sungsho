@@ -8,7 +8,7 @@ body {
 
 /* 页面内容居中 */
 .container {
-    position: absolute;
+    position:fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

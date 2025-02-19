@@ -32,25 +32,40 @@
             <button id="no">补药<br>╥﹏╥ </button>
         </div>
     </div>
+    <!-- 提供多种音频格式 -->
     <audio id="music" preload="auto">
-        <!-- 提供多种音频格式 -->
         <source src="SungSho.mp3" type="audio/mpeg">
         <source src="SungSho.ogg" type="audio/ogg">
-        <!-- 若浏览器不支持任何提供的格式，显示提示信息 -->
         您的浏览器不支持音频播放。
     </audio>
     <script>
-        // 获取音频元素
         const audio = document.getElementById('music');
+        const yesButton = document.getElementById('yes');
+        const noButton = document.getElementById('no');
+
+        // 为 yes 按钮添加点击事件监听器
+        yesButton.addEventListener('click', function () {
+            audio.play();
+        });
+
+        // 为 no 按钮添加点击事件监听器
+        noButton.addEventListener('click', function () {
+            audio.play();
+        });
 
         // 尝试自动播放音频
         audio.play().catch(() => {
-            // 自动播放失败时，监听用户的点击事件来播放音频
-            document.addEventListener('click', function playAudioOnClick() {
+            // 当自动播放失败时，监听用户的第一次交互事件
+            const playOnInteraction = () => {
                 audio.play();
-                // 移除点击事件监听器，避免重复绑定
-                document.removeEventListener('click', playAudioOnClick);
-            });
+                // 移除事件监听器，避免重复触发
+                document.removeEventListener('click', playOnInteraction);
+                document.removeEventListener('touchstart', playOnInteraction);
+            };
+
+            // 监听点击和触摸事件
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
         });
     </script>
     <script src="2.js"></script>
