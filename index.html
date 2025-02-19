@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,19 @@
             font-family: hello;
             src: url(HelloKitty.TTF);
         }
-        h1{
+
+        h1 {
             font-family: hello;
         }
-        button{
+
+        button {
             font-family: hello;
-            font-weight:bold;
+            font-weight: bold;
         }
-        
-    
     </style>
     <link rel="stylesheet" href="3.css">
-    
 </head>
+
 <body>
     <div class="container">
         <img id="mainImage" src="image/heart.png" alt="爱心">
@@ -31,7 +32,28 @@
             <button id="no">补药<br>╥﹏╥ </button>
         </div>
     </div>
-    <audio src="SungSho.mp3"autoplay loop></audio>
+    <audio id="music" preload="auto">
+        <!-- 提供多种音频格式 -->
+        <source src="SungSho.mp3" type="audio/mpeg">
+        <source src="SungSho.ogg" type="audio/ogg">
+        <!-- 若浏览器不支持任何提供的格式，显示提示信息 -->
+        您的浏览器不支持音频播放。
+    </audio>
+    <script>
+        // 获取音频元素
+        const audio = document.getElementById('music');
+
+        // 尝试自动播放音频
+        audio.play().catch(() => {
+            // 自动播放失败时，监听用户的点击事件来播放音频
+            document.addEventListener('click', function playAudioOnClick() {
+                audio.play();
+                // 移除点击事件监听器，避免重复绑定
+                document.removeEventListener('click', playAudioOnClick);
+            });
+        });
+    </script>
     <script src="2.js"></script>
 </body>
+
 </html>
