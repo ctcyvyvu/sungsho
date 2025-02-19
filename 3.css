@@ -1,0 +1,64 @@
+body {
+    background-color: #fac4d5; 
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 页面内容居中 */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 让图片大小适中 */
+#mainImage {
+    width: 600px;
+    transition: all 0.3s ease;
+}
+
+/* 文字 */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d35b7e;
+}
+
+/* 按钮样式 */
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+#yes {
+    background-color: #f17172; 
+    color: white;
+}
+
+#no {
+    background-color: #b1bce8; 
+    color: white;
+    position: relative;
+}
+
+/* Yes 完全填满屏幕 */
+.yes-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f7afba; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
